@@ -7,149 +7,211 @@
     <style>
         :root {
             --primary: #2ecc71;
-            --dark: #1e1e1e;
-            --light: #f4f4f4;
+            --primary-hover: #27ae60;
+            --dark-bg: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #ffffff;
+            --text-dim: #b3b3b3;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--dark);
-            color: white;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-main);
+            margin: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 50px 20px;
+            min-height: 100vh;
+            padding: 20px;
         }
 
         .container {
             width: 100%;
-            max-width: 600px;
-            text-align: center;
+            max-width: 650px;
+            margin-top: 5vh;
         }
 
-        h1 { color: var(--primary); margin-bottom: 30px; }
+        .header { text-align: center; margin-bottom: 40px; }
+        .header h1 { font-size: 3rem; margin: 0; color: var(--primary); letter-spacing: -1px; }
+        .header p { color: var(--text-dim); margin-top: 5px; }
 
+        /* Barra de Busca */
+        .search-box { position: relative; width: 100%; }
+        
         #search-input {
             width: 100%;
-            padding: 15px;
-            border-radius: 8px;
-            border: none;
-            font-size: 18px;
+            padding: 18px 25px;
+            border-radius: 12px;
+            border: 2px solid #333;
+            background: var(--card-bg);
+            color: white;
+            font-size: 1.1rem;
             outline: none;
             box-sizing: border-box;
+            transition: border-color 0.3s;
         }
 
+        #search-input:focus { border-color: var(--primary); }
+
+        /* Lista de Resultados */
         .results-list {
             margin-top: 10px;
-            background: #2a2a2a;
-            border-radius: 8px;
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             overflow: hidden;
-            text-align: left;
         }
 
         .mod-item {
-            padding: 15px;
-            border-bottom: 1px solid #3d3d3d;
+            padding: 15px 25px;
+            border-bottom: 1px solid #333;
             cursor: pointer;
-            transition: background 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
         }
 
-        .mod-item:hover { background: #333; }
+        .mod-item:hover { background: #252525; }
+        .mod-item:last-child { border-bottom: none; }
+        .mod-item .creator { font-size: 0.85rem; color: var(--text-dim); }
 
+        /* Painel de Detalhes */
         .mod-details {
             margin-top: 20px;
-            padding: 20px;
+            padding: 30px;
             background: white;
-            color: #333;
-            border-radius: 8px;
-            display: none; /* Escondido por padrão */
-            text-align: left;
+            color: #121212;
+            border-radius: 15px;
+            display: none;
+            animation: fadeIn 0.3s ease;
         }
 
-        .safe-badge {
-            background: #d4edda;
-            color: #155724;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-weight: bold;
-            font-size: 12px;
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .btn-link {
+        .mod-details h2 { margin-top: 0; color: #121212; font-size: 1.8rem; }
+        .badge {
             display: inline-block;
-            margin-top: 10px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            background: #e8f5e9;
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+
+        .info-label { font-weight: bold; color: #555; display: block; margin-top: 15px; }
+        
+        .btn-link {
+            display: block;
+            text-align: center;
+            margin-top: 25px;
             background: var(--primary);
             color: white;
-            padding: 10px 20px;
+            padding: 15px;
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.2s;
         }
+
+        .btn-link:hover { background: var(--primary-hover); }
+
+        .no-results { padding: 20px; text-align: center; color: var(--text-dim); }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>MDCraft</h1>
-    <input type="text" id="search-input" placeholder="Digite o nome de um mod (ex: Optifine)...">
-    
-    <div id="results" class="results-list"></div>
+    <div class="header">
+        <h1>MDCraft</h1>
+        <p>A biblioteca definitiva de mods e addons.</p>
+    </div>
+
+    <div class="search-box">
+        <input type="text" id="search-input" placeholder="Procure por nome, criador ou utilidade..." autocomplete="off">
+        <div id="results" class="results-list"></div>
+    </div>
 
     <div id="details" class="mod-details">
+        <div id="det-confiavel" class="badge"></div>
         <h2 id="det-nome"></h2>
-        <p><strong>Criador:</strong> <span id="det-criador"></span></p>
-        <p><strong>Descrição:</strong> <span id="det-desc"></span></p>
-        <p><strong>Status:</strong> <span id="det-confiavel" class="safe-badge"></span></p>
-        <a id="det-link" href="#" target="_blank" class="btn-link">Acessar Mod</a>
+        
+        <span class="info-label">Criador</span>
+        <div id="det-criador"></div>
+
+        <span class="info-label">Descrição</span>
+        <div id="det-desc"></div>
+
+        <a id="det-link" href="#" target="_blank" class="btn-link">Baixar / Ver Site Oficial</a>
     </div>
 </div>
 
 <script>
     let modsData = [];
 
-    // Carregar os dados do JSON
-    fetch('mods.json')
-        .then(response => response.json())
-        .then(data => modsData = data);
+    // Busca o arquivo JSON
+    async function init() {
+        try {
+            const response = await fetch('mods.json');
+            if (!response.ok) throw new Error("Erro ao carregar banco de dados.");
+            modsData = await response.json();
+        } catch (err) {
+            console.error(err);
+            document.getElementById('results').innerHTML = '<div class="no-results">Erro ao carregar mods. Verifique o arquivo JSON.</div>';
+        }
+    }
 
     const input = document.getElementById('search-input');
     const resultsDiv = document.getElementById('results');
     const detailsDiv = document.getElementById('details');
 
-    input.addEventListener('input', (e) => {
-        const term = e.target.value.toLowerCase();
+    input.addEventListener('input', () => {
+        const termo = input.value.toLowerCase().trim();
         resultsDiv.innerHTML = '';
         detailsDiv.style.display = 'none';
 
-        if (term.length > 0) {
-            const filtered = modsData.filter(mod => 
-                mod.nome.toLowerCase().includes(term) || 
-                mod.tags.some(tag => tag.includes(term))
-            ).slice(0, 5); // Limita a 5 resultados
+        if (termo.length > 0) {
+            const encontrados = modsData.filter(mod => 
+                mod.nome.toLowerCase().includes(termo) || 
+                mod.criador.toLowerCase().includes(termo) ||
+                mod.tags.some(tag => tag.toLowerCase().includes(termo))
+            ).slice(0, 5);
 
-            filtered.forEach(mod => {
-                const div = document.createElement('div');
-                div.className = 'mod-item';
-                div.innerHTML = `<strong>${mod.nome}</strong> - ${mod.criador}`;
-                div.onclick = () => showDetails(mod);
-                resultsDiv.appendChild(div);
-            });
+            if (encontrados.length > 0) {
+                encontrados.forEach(mod => {
+                    const div = document.createElement('div');
+                    div.className = 'mod-item';
+                    div.innerHTML = `
+                        <span>${mod.nome}</span>
+                        <span class="creator">${mod.criador}</span>
+                    `;
+                    div.onclick = () => mostrarMod(mod);
+                    resultsDiv.appendChild(div);
+                });
+            } else {
+                resultsDiv.innerHTML = '<div class="no-results">Nenhum mod encontrado para esta busca.</div>';
+            }
         }
     });
 
-    function showDetails(mod) {
-        resultsDiv.innerHTML = ''; // Limpa a busca
+    function mostrarMod(mod) {
+        resultsDiv.innerHTML = '';
         input.value = mod.nome;
-        
+
         document.getElementById('det-nome').innerText = mod.nome;
         document.getElementById('det-criador').innerText = mod.criador;
         document.getElementById('det-desc').innerText = mod.descricao;
-        document.getElementById('det-confiavel').innerText = mod.confiavel;
+        document.getElementById('det-confiavel').innerText = "✓ " + mod.confiavel;
         document.getElementById('det-link').href = mod.links[0];
-        
+
         detailsDiv.style.display = 'block';
     }
+
+    init();
 </script>
 
 </body>
 </html>
-  
