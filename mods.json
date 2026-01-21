@@ -79,5 +79,95 @@
     "confiavel": "Sim (CurseForge)",
     "links": ["https://www.curseforge.com/minecraft/mc-mods/alexs-mobs"],
     "tags": ["mobs", "animais", "aventura", "criaturas"]
+  },
+  {
+    "id": "10",
+    "nome": "Create",
+    "descricao": "Mod focado em engenharia e automação mecânica com engrenagens, eixos e máquinas visuais.",
+    "criador": "simibubi",
+    "confiavel": "Sim (CurseForge / Modrinth)",
+    "links": ["https://www.curseforge.com/minecraft/mc-mods/create"],
+    "tags": ["automação", "engenharia", "máquinas", "redstone"]
+  },
+  {
+    "id": "11",
+    "nome": "Biomes O' Plenty",
+    "descricao": "Expande o mundo com dezenas de biomas novos, árvores, plantas e paisagens únicas.",
+    "criador": "Forstride",
+    "confiavel": "Sim (CurseForge)",
+    "links": ["https://www.curseforge.com/minecraft/mc-mods/biomes-o-plenty"],
+    "tags": ["biomas", "exploração", "mundo", "natureza"]
+  },
+  {
+    "id": "12",
+    "nome": "Better Minecraft",
+    "descricao": "Modpack que expande o Minecraft vanilla com foco em aventura, exploração e progressão.",
+    "criador": "LunaPixelStudios",
+    "confiavel": "Sim (CurseForge)",
+    "links": ["https://www.curseforge.com/minecraft/modpacks/better-minecraft"],
+    "tags": ["modpack", "aventura", "exploração", "rpg"]
+  },
+  {
+    "id": "13",
+    "nome": "Xaero's Minimap",
+    "descricao": "Minimapa leve e altamente configurável, alternativa ao JourneyMap.",
+    "criador": "xaero96",
+    "confiavel": "Sim (CurseForge)",
+    "links": ["https://www.curseforge.com/minecraft/mc-mods/xaeros-minimap"],
+    "tags": ["mapa", "minimapa", "exploração", "hud"]
+  },
+  {
+    "id": "14",
+    "nome": "Iron Chests",
+    "descricao": "Adiciona baús aprimorados com maior capacidade, mantendo o estilo vanilla.",
+    "criador": "ProgWML6",
+    "confiavel": "Sim (CurseForge)",
+    "links": ["https://www.curseforge.com/minecraft/mc-mods/iron-chests"],
+    "tags": ["baús", "armazenamento", "organização"]
+  },
+  {
+    "id": "15",
+    "nome": "Tinkers' Construct",
+    "descricao": "Sistema avançado de criação e customização de ferramentas e armas.",
+    "criador": "SlimeKnights",
+    "confiavel": "Sim (CurseForge)",
+    "links": ["https://www.curseforge.com/minecraft/mc-mods/tinkers-construct"],
+    "tags": ["ferramentas", "armas", "crafting", "progressão"]
+  },
+  {
+    "id": "16",
+    "nome": "Replay Mod",
+    "descricao": "Permite gravar partidas e criar vídeos cinematográficos dentro do Minecraft.",
+    "criador": "ReplayMod",
+    "confiavel": "Sim (Site Oficial)",
+    "links": ["https://www.replaymod.com/"],
+    "tags": ["gravação", "cinematica", "videos", "conteúdo"]
+  },
+  {
+    "id": "17",
+    "nome": "Pixelmon",
+    "descricao": "Mod inspirado em Pokémon, adicionando criaturas, batalhas e sistemas completos.",
+    "criador": "Pixelmon Team",
+    "confiavel": "Atenção (Site Oficial / Histórico de remoções)",
+    "links": ["https://pixelmonmod.com/"],
+    "tags": ["pokemon", "aventura", "criaturas", "rpg"]
+  },
+  {
+    "id": "18",
+    "nome": "RLCraft",
+    "descricao": "Modpack extremamente difícil que transforma o Minecraft em um jogo de sobrevivência hardcore.",
+    "criador": "Shivaxi",
+    "confiavel": "Sim (CurseForge)",
+    "links": ["https://www.curseforge.com/minecraft/modpacks/rlcraft"],
+    "tags": ["hardcore", "modpack", "sobrevivencia", "difícil"]
+  },
+  {
+    "id": "19",
+    "nome": "Orespawn (Legacy)",
+    "descricao": "Mod antigo e descontinuado com mobs e armas exageradas. Não recomendado para versões atuais.",
+    "criador": "DangerZone",
+    "confiavel": "Não recomendado (Sites não oficiais)",
+    "links": ["https://orespawn.fr/"],
+    "tags": ["legacy", "antigo", "mobs", "armas"]
   }
 ]
