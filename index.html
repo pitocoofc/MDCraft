@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MDCraft - Index de Mods</title>
+    <style>
+        :root {
+            --primary: #2ecc71;
+            --dark: #1e1e1e;
+            --light: #f4f4f4;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--dark);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        h1 { color: var(--primary); margin-bottom: 30px; }
+
+        #search-input {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            border: none;
+            font-size: 18px;
+            outline: none;
+            box-sizing: border-box;
+        }
+
+        .results-list {
+            margin-top: 10px;
+            background: #2a2a2a;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: left;
+        }
+
+        .mod-item {
+            padding: 15px;
+            border-bottom: 1px solid #3d3d3d;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .mod-item:hover { background: #333; }
+
+        .mod-details {
+            margin-top: 20px;
+            padding: 20px;
+            background: white;
+            color: #333;
+            border-radius: 8px;
+            display: none; /* Escondido por padrão */
+            text-align: left;
+        }
+
+        .safe-badge {
+            background: #d4edda;
+            color: #155724;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .btn-link {
+            display: inline-block;
+            margin-top: 10px;
+            background: var(--primary);
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>MDCraft</h1>
+    <input type="text" id="search-input" placeholder="Digite o nome de um mod (ex: Optifine)...">
+    
+    <div id="results" class="results-list"></div>
+
+    <div id="details" class="mod-details">
+        <h2 id="det-nome"></h2>
+        <p><strong>Criador:</strong> <span id="det-criador"></span></p>
+        <p><strong>Descrição:</strong> <span id="det-desc"></span></p>
+        <p><strong>Status:</strong> <span id="det-confiavel" class="safe-badge"></span></p>
+        <a id="det-link" href="#" target="_blank" class="btn-link">Acessar Mod</a>
+    </div>
+</div>
+
+<script>
+    let modsData = [];
+
+    // Carregar os dados do JSON
+    fetch('mods.json')
+        .then(response => response.json())
+        .then(data => modsData = data);
+
+    const input = document.getElementById('search-input');
+    const resultsDiv = document.getElementById('results');
+    const detailsDiv = document.getElementById('details');
+
+    input.addEventListener('input', (e) => {
+        const term = e.target.value.toLowerCase();
+        resultsDiv.innerHTML = '';
+        detailsDiv.style.display = 'none';
+
+        if (term.length > 0) {
+            const filtered = modsData.filter(mod => 
+                mod.nome.toLowerCase().includes(term) || 
+                mod.tags.some(tag => tag.includes(term))
+            ).slice(0, 5); // Limita a 5 resultados
+
+            filtered.forEach(mod => {
+                const div = document.createElement('div');
+                div.className = 'mod-item';
+                div.innerHTML = `<strong>${mod.nome}</strong> - ${mod.criador}`;
+                div.onclick = () => showDetails(mod);
+                resultsDiv.appendChild(div);
+            });
+        }
+    });
+
+    function showDetails(mod) {
+        resultsDiv.innerHTML = ''; // Limpa a busca
+        input.value = mod.nome;
+        
+        document.getElementById('det-nome').innerText = mod.nome;
+        document.getElementById('det-criador').innerText = mod.criador;
+        document.getElementById('det-desc').innerText = mod.descricao;
+        document.getElementById('det-confiavel').innerText = mod.confiavel;
+        document.getElementById('det-link').href = mod.links[0];
+        
+        detailsDiv.style.display = 'block';
+    }
+</script>
+
+</body>
+</html>
+  
