@@ -15,7 +15,7 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--dark-bg);
             color: var(--text-main);
             margin: 0;
@@ -36,31 +36,47 @@
         .header h1 { font-size: 3rem; margin: 0; color: var(--primary); letter-spacing: -1px; }
         .header p { color: var(--text-dim); margin-top: 5px; }
 
-        /* Barra de Busca */
-        .search-box { position: relative; width: 100%; }
-        
-        #search-input {
+        /* Barra de Busca e Botão */
+        .search-container {
+            display: flex;
+            gap: 10px;
             width: 100%;
-            padding: 18px 25px;
+        }
+
+        #search-input {
+            flex: 1;
+            padding: 15px 20px;
             border-radius: 12px;
             border: 2px solid #333;
             background: var(--card-bg);
             color: white;
-            font-size: 1.1rem;
+            font-size: 1rem;
             outline: none;
-            box-sizing: border-box;
             transition: border-color 0.3s;
         }
 
         #search-input:focus { border-color: var(--primary); }
+
+        #search-btn {
+            padding: 0 20px;
+            border-radius: 12px;
+            border: none;
+            background: var(--primary);
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        #search-btn:hover { background: var(--primary-hover); }
 
         /* Lista de Resultados */
         .results-list {
             margin-top: 10px;
             background: var(--card-bg);
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
             overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .mod-item {
@@ -70,12 +86,11 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            transition: background 0.2s;
         }
 
         .mod-item:hover { background: #252525; }
         .mod-item:last-child { border-bottom: none; }
-        .mod-item .creator { font-size: 0.85rem; color: var(--text-dim); }
+        .mod-item .creator { font-size: 0.8rem; color: var(--text-dim); }
 
         /* Painel de Detalhes */
         .mod-details {
@@ -90,7 +105,6 @@
 
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-        .mod-details h2 { margin-top: 0; color: #121212; font-size: 1.8rem; }
         .badge {
             display: inline-block;
             padding: 4px 12px;
@@ -99,7 +113,7 @@
             font-weight: bold;
             background: #e8f5e9;
             color: #2e7d32;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .info-label { font-weight: bold; color: #555; display: block; margin-top: 15px; }
@@ -114,10 +128,7 @@
             text-decoration: none;
             border-radius: 8px;
             font-weight: bold;
-            transition: background 0.2s;
         }
-
-        .btn-link:hover { background: var(--primary-hover); }
 
         .no-results { padding: 20px; text-align: center; color: var(--text-dim); }
     </style>
@@ -130,14 +141,16 @@
         <p>A biblioteca definitiva de mods e addons.</p>
     </div>
 
-    <div class="search-box">
-        <input type="text" id="search-input" placeholder="Procure por nome, criador ou utilidade..." autocomplete="off">
-        <div id="results" class="results-list"></div>
+    <div class="search-container">
+        <input type="text" id="search-input" placeholder="Busque nome, criador ou tag (ex: fps)..." autocomplete="off">
+        <button id="search-btn">🔍</button>
     </div>
+    
+    <div id="results" class="results-list"></div>
 
     <div id="details" class="mod-details">
         <div id="det-confiavel" class="badge"></div>
-        <h2 id="det-nome"></h2>
+        <h2 id="det-nome" style="margin: 5px 0;"></h2>
         
         <span class="info-label">Criador</span>
         <div id="det-criador"></div>
@@ -152,65 +165,68 @@
 <script>
     let modsData = [];
 
-    // Busca o arquivo JSON
-    async function init() {
+    async function carregarDados() {
         try {
             const response = await fetch('mods.json');
-            if (!response.ok) throw new Error("Erro ao carregar banco de dados.");
             modsData = await response.json();
         } catch (err) {
-            console.error(err);
-            document.getElementById('results').innerHTML = '<div class="no-results">Erro ao carregar mods. Verifique o arquivo JSON.</div>';
+            console.error("Erro ao carregar o arquivo mods.json");
         }
     }
 
     const input = document.getElementById('search-input');
+    const btn = document.getElementById('search-btn');
     const resultsDiv = document.getElementById('results');
     const detailsDiv = document.getElementById('details');
 
-    input.addEventListener('input', () => {
+    function realizarBusca() {
         const termo = input.value.toLowerCase().trim();
         resultsDiv.innerHTML = '';
         detailsDiv.style.display = 'none';
 
-        if (termo.length > 0) {
-            const encontrados = modsData.filter(mod => 
-                mod.nome.toLowerCase().includes(termo) || 
-                mod.criador.toLowerCase().includes(termo) ||
-                mod.tags.some(tag => tag.toLowerCase().includes(termo))
-            ).slice(0, 5);
+        if (termo === '') return;
 
-            if (encontrados.length > 0) {
-                encontrados.forEach(mod => {
+        // Busca em Nome, Criador ou Tags
+        const encontrados = modsData.filter(mod => 
+            mod.nome.toLowerCase().includes(termo) || 
+            mod.criador.toLowerCase().includes(termo) ||
+            mod.tags.some(tag => tag.toLowerCase().includes(termo))
+        );
+
+        if (encontrados.length > 0) {
+            // Se houver apenas 1 resultado exato, mostra direto
+            if (encontrados.length === 1 && encontrados[0].nome.toLowerCase() === termo) {
+                mostrarMod(encontrados[0]);
+            } else {
+                encontrados.slice(0, 5).forEach(mod => {
                     const div = document.createElement('div');
                     div.className = 'mod-item';
-                    div.innerHTML = `
-                        <span>${mod.nome}</span>
-                        <span class="creator">${mod.criador}</span>
-                    `;
+                    div.innerHTML = `<span>${mod.nome}</span> <span class="creator">${mod.criador}</span>`;
                     div.onclick = () => mostrarMod(mod);
                     resultsDiv.appendChild(div);
                 });
-            } else {
-                resultsDiv.innerHTML = '<div class="no-results">Nenhum mod encontrado para esta busca.</div>';
             }
+        } else {
+            resultsDiv.innerHTML = '<div class="no-results">Nenhum mod encontrado. Tente outra palavra-chave!</div>';
         }
-    });
+    }
 
     function mostrarMod(mod) {
         resultsDiv.innerHTML = '';
         input.value = mod.nome;
-
         document.getElementById('det-nome').innerText = mod.nome;
         document.getElementById('det-criador').innerText = mod.criador;
         document.getElementById('det-desc').innerText = mod.descricao;
         document.getElementById('det-confiavel').innerText = "✓ " + mod.confiavel;
         document.getElementById('det-link').href = mod.links[0];
-
         detailsDiv.style.display = 'block';
     }
 
-    init();
+    input.addEventListener('input', realizarBusca);
+    btn.addEventListener('click', realizarBusca);
+    input.addEventListener('keypress', (e) => { if (e.key === 'Enter') realizarBusca(); });
+
+    carregarDados();
 </script>
 
 </body>
