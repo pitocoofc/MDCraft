@@ -2,7 +2,7 @@
   {
     "id": "1",
     "nome": "OptiFine",
-    "descricao": "Otimização de performance, suporte a texturas HD e shaders.",
+    "descricao": "Otimização de performance, suporte a texturas HD e shaders para versões antigas e novas.",
     "criador": "sp614x",
     "confiavel": "Sim (Oficial)",
     "links": ["https://optifine.net/downloads"],
@@ -11,16 +11,16 @@
   {
     "id": "2",
     "nome": "Just Enough Items (JEI)",
-    "descricao": "Visualizador de receitas e itens. Essencial para qualquer modpack.",
+    "descricao": "O melhor visualizador de receitas e itens. Essencial para não se perder no crafting.",
     "criador": "mezz",
-    "confiavel": "Sim (Modrinth/Curse)",
+    "confiavel": "Sim (CurseForge)",
     "links": ["https://www.curseforge.com/minecraft/mc-mods/jei"],
     "tags": ["receitas", "utilidade", "itens", "crafting"]
   },
   {
     "id": "3",
     "nome": "WorldEdit",
-    "descricao": "Ferramenta de edição de mapas em tempo real via comandos.",
+    "descricao": "Crie construções gigantescas em segundos usando comandos de edição de mundo.",
     "criador": "EngineHub",
     "confiavel": "Sim (Código Aberto)",
     "links": ["https://www.curseforge.com/minecraft/mc-mods/worldedit"],
@@ -29,28 +29,55 @@
   {
     "id": "4",
     "nome": "Essential Mod",
-    "descricao": "Jogue com amigos sem precisar de servidor, além de cosméticos e prints.",
+    "descricao": "Transforma seu mundo singleplayer em multiplayer para convidar amigos facilmente.",
     "criador": "Spark Universe",
     "confiavel": "Sim (Oficial)",
     "links": ["https://essential.gg/"],
-    "tags": ["multiplayer", "amigos", "social"]
+    "tags": ["multiplayer", "amigos", "social", "cosmeticos"]
   },
   {
     "id": "5",
-    "nome": "teste",
-    "descricao": "teste",
-    "criador": "teste",
-    "confiavel": "Sim (Oficial)",
-    "links": ["https://teste.gg/"],
-    "tags": ["teste1", "teste2", "teste3"]
+    "nome": "Sodium",
+    "descricao": "Motor de renderização moderno que substitui o Optifine no Fabric, oferecendo muito mais FPS.",
+    "criador": "jellysquid3",
+    "confiavel": "Sim (Modrinth)",
+    "links": ["https://modrinth.com/mod/sodium"],
+    "tags": ["fps", "performance", "fabric", "otimização"]
   },
   {
     "id": "6",
-    "nome": "teste",
-    "descricao": "teste",
-    "criador": "teste",
-    "confiavel": "Sim (Oficial)",
-    "links": ["https://teste.gg/"],
-    "tags": ["teste1", "teste2", "teste3"]
+    "nome": "JourneyMap",
+    "descricao": "Um mapa em tempo real que mostra o mundo conforme você explora, com Waypoints.",
+    "criador": "techbrew",
+    "confiavel": "Sim (CurseForge)",
+    "links": ["https://www.curseforge.com/minecraft/mc-mods/journeymap"],
+    "tags": ["mapa", "exploração", "minimapa", "utilidade"]
+  },
+  {
+    "id": "7",
+    "nome": "AppleSkin",
+    "descricao": "Adiciona informações visuais sobre a fome e saturação dos alimentos na barra de HUD.",
+    "criador": "squeek502",
+    "confiavel": "Sim (Modrinth)",
+    "links": ["https://modrinth.com/mod/appleskin"],
+    "tags": ["fome", "comida", "hud", "sobrevivencia"]
+  },
+  {
+    "id": "8",
+    "nome": "Mouse Tweaks",
+    "descricao": "Melhora a mecânica de organizar itens no inventário usando o botão direito do mouse.",
+    "criador": "YaLTeR",
+    "confiavel": "Sim (CurseForge)",
+    "links": ["https://www.curseforge.com/minecraft/mc-mods/mouse-tweaks"],
+    "tags": ["inventario", "organização", "utilidade"]
+  },
+  {
+    "id": "9",
+    "nome": "Alex's Mobs",
+    "descricao": "Adiciona mais de 80 animais novos e criaturas únicas ao mundo do Minecraft.",
+    "criador": "Alex1the1666",
+    "confiavel": "Sim (CurseForge)",
+    "links": ["https://www.curseforge.com/minecraft/mc-mods/alexs-mobs"],
+    "tags": ["mobs", "animais", "aventura", "criaturas"]
   }
 ]
