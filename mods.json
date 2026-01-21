@@ -2,37 +2,37 @@
   {
     "id": "1",
     "nome": "OptiFine",
-    "descricao": "Melhora o FPS e permite o uso de Shaders (gráficos realistas).",
+    "descricao": "Otimização de performance, suporte a texturas HD e shaders.",
     "criador": "sp614x",
-    "confiavel": "Seguro (Site Oficial)",
+    "confiavel": "Sim (Oficial)",
     "links": ["https://optifine.net/downloads"],
-    "tags": ["fps", "otimização", "graficos"]
+    "tags": ["fps", "otimização", "graficos", "shaders"]
   },
- {
+  {
     "id": "2",
-    "nome": "hdj",
-    "descricao": "Exibe todos os itens do jogo e suas receitas de crafting.",
+    "nome": "Just Enough Items (JEI)",
+    "descricao": "Visualizador de receitas e itens. Essencial para qualquer modpack.",
     "criador": "mezz",
-    "confiavel": "Seguro (Modrinth/CurseForge)",
+    "confiavel": "Sim (Modrinth/Curse)",
     "links": ["https://www.curseforge.com/minecraft/mc-mods/jei"],
-    "tags": ["3", "hu", "lo"]
+    "tags": ["receitas", "utilidade", "itens", "crafting"]
   },
   {
     "id": "3",
-    "nome": "Just Enough Items (JEI)",
-    "descricao": "Exibe todos os itens do jogo e suas receitas de crafting.",
-    "criador": "mezz",
-    "confiavel": "Seguro (Modrinth/CurseForge)",
-    "links": ["https://www.curseforge.com/minecraft/mc-mods/jei"],
-    "tags": ["receitas", "utilidade", "itens"]
+    "nome": "WorldEdit",
+    "descricao": "Ferramenta de edição de mapas em tempo real via comandos.",
+    "criador": "EngineHub",
+    "confiavel": "Sim (Código Aberto)",
+    "links": ["https://www.curseforge.com/minecraft/mc-mods/worldedit"],
+    "tags": ["construção", "edição", "criativo", "mapas"]
   },
   {
     "id": "4",
-    "nome": "Iris Shaders",
-    "descricao": "Alternativa moderna e rápida ao OptiFine para shaders.",
-    "criador": "coderbot",
-    "confiavel": "Seguro (Código Aberto)",
-    "links": ["https://modrinth.com/mod/iris"],
-    "tags": ["shaders", "performance", "fabric"]
+    "nome": "Essential Mod",
+    "descricao": "Jogue com amigos sem precisar de servidor, além de cosméticos e prints.",
+    "criador": "Spark Universe",
+    "confiavel": "Sim (Oficial)",
+    "links": ["https://essential.gg/"],
+    "tags": ["multiplayer", "amigos", "social"]
   }
 ]
