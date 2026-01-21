@@ -43,5 +43,14 @@
     "confiavel": "Sim (Oficial)",
     "links": ["https://teste.gg/"],
     "tags": ["teste1", "teste2", "teste3"]
+  },
+  {
+    "id": "6",
+    "nome": "teste",
+    "descricao": "teste",
+    "criador": "teste",
+    "confiavel": "Sim (Oficial)",
+    "links": ["https://teste.gg/"],
+    "tags": ["teste1", "teste2", "teste3"]
   }
 ]
