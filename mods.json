@@ -169,5 +169,95 @@
     "confiavel": "Não recomendado (Sites não oficiais)",
     "links": ["https://orespawn.fr/"],
     "tags": ["legacy", "antigo", "mobs", "armas"]
+  },
+  {
+    "id": "20",
+    "nome": "Fabric API",
+    "descricao": "Biblioteca essencial para a maioria dos mods Fabric funcionarem corretamente.",
+    "criador": "FabricMC",
+    "confiavel": "Sim (Oficial)",
+    "links": ["https://modrinth.com/mod/fabric-api"],
+    "tags": ["fabric", "api", "dependência", "biblioteca"]
+  },
+  {
+    "id": "21",
+    "nome": "Forge",
+    "descricao": "Loader mais popular do Minecraft, necessário para rodar milhares de mods.",
+    "criador": "Minecraft Forge",
+    "confiavel": "Sim (Oficial)",
+    "links": ["https://files.minecraftforge.net/"],
+    "tags": ["forge", "loader", "mods", "base"]
+  },
+  {
+    "id": "22",
+    "nome": "Neat",
+    "descricao": "Exibe barra de vida simples e elegante acima dos mobs.",
+    "criador": "Vazkii",
+    "confiavel": "Sim (CurseForge)",
+    "links": ["https://www.curseforge.com/minecraft/mc-mods/neat"],
+    "tags": ["hud", "vida", "mobs", "interface"]
+  },
+  {
+    "id": "23",
+    "nome": "Waystones",
+    "descricao": "Sistema de teleporte usando waystones espalhadas pelo mundo.",
+    "criador": "BlayTheNinth",
+    "confiavel": "Sim (CurseForge)",
+    "links": ["https://www.curseforge.com/minecraft/mc-mods/waystones"],
+    "tags": ["teleporte", "viagem", "exploração", "utilidade"]
+  },
+  {
+    "id": "24",
+    "nome": "Clumps",
+    "descricao": "Agrupa orbes de XP para melhorar performance e reduzir lag.",
+    "criador": "Jaredlll08",
+    "confiavel": "Sim (CurseForge)",
+    "links": ["https://www.curseforge.com/minecraft/mc-mods/clumps"],
+    "tags": ["performance", "xp", "lag", "otimização"]
+  },
+  {
+    "id": "25",
+    "nome": "Dynamic Lights",
+    "descricao": "Iluminação dinâmica ao segurar tochas ou itens luminosos.",
+    "criador": "AtomicStryker",
+    "confiavel": "Sim (CurseForge)",
+    "links": ["https://www.curseforge.com/minecraft/mc-mods/dynamic-lights"],
+    "tags": ["luz", "imersão", "graficos", "visual"]
+  },
+  {
+    "id": "26",
+    "nome": "Litematica",
+    "descricao": "Ferramenta avançada para schematics e construções precisas.",
+    "criador": "masa",
+    "confiavel": "Sim (Código Aberto)",
+    "links": ["https://www.curseforge.com/minecraft/mc-mods/litematica"],
+    "tags": ["schematic", "construção", "planejamento", "criativo"]
+  },
+  {
+    "id": "27",
+    "nome": "BetterFPS",
+    "descricao": "Otimiza cálculos internos para melhorar FPS em máquinas fracas.",
+    "criador": "Guichaguri",
+    "confiavel": "Sim (CurseForge)",
+    "links": ["https://www.curseforge.com/minecraft/mc-mods/betterfps"],
+    "tags": ["fps", "otimização", "performance"]
+  },
+  {
+    "id": "28",
+    "nome": "Too Many Items (TMI)",
+    "descricao": "Mod clássico e descontinuado, precursor do JEI.",
+    "criador": "Marglyph",
+    "confiavel": "Não recomendado (Descontinuado)",
+    "links": ["https://minecraft.curseforge.com/projects/too-many-items"],
+    "tags": ["legacy", "antigo", "itens", "criativo"]
+  },
+  {
+    "id": "29",
+    "nome": "Morph Mod",
+    "descricao": "Permite se transformar em mobs derrotados.",
+    "criador": "iChun",
+    "confiavel": "Sim (CurseForge)",
+    "links": ["https://www.curseforge.com/minecraft/mc-mods/morph"],
+    "tags": ["mobs", "habilidades", "diversão", "transformação"]
   }
 ]
