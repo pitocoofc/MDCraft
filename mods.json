@@ -1,0 +1,29 @@
+[
+  {
+    "id": "1",
+    "nome": "OptiFine",
+    "descricao": "Melhora o FPS e permite o uso de Shaders (gráficos realistas).",
+    "criador": "sp614x",
+    "confiavel": "Seguro (Site Oficial)",
+    "links": ["https://optifine.net/downloads"],
+    "tags": ["fps", "otimização", "graficos"]
+  },
+  {
+    "id": "2",
+    "nome": "Just Enough Items (JEI)",
+    "descricao": "Exibe todos os itens do jogo e suas receitas de crafting.",
+    "criador": "mezz",
+    "confiavel": "Seguro (Modrinth/CurseForge)",
+    "links": ["https://www.curseforge.com/minecraft/mc-mods/jei"],
+    "tags": ["receitas", "utilidade", "itens"]
+  },
+  {
+    "id": "3",
+    "nome": "Iris Shaders",
+    "descricao": "Alternativa moderna e rápida ao OptiFine para shaders.",
+    "criador": "coderbot",
+    "confiavel": "Seguro (Código Aberto)",
+    "links": ["https://modrinth.com/mod/iris"],
+    "tags": ["shaders", "performance", "fabric"]
+  }
+]
